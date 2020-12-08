@@ -1,0 +1,41 @@
+name: Deploy Covid-19 tracker app on Surge with Yarn.
+
+# on which event Github action trigger your actions.
+
+on:
+  push:
+    branches: [master]
+
+# worksflows jobs that has to be run.
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    #steps to be defined here.
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      - name: Install Nodejs
+        uses: actions/setup-node@v2-beta
+        with:
+          node-version: 12
+      - uses: borales/actions-yarn@2.0.0
+        with:
+          cmd: install
+
+      # build the project.
+      - name: Build the project.
+      - uses: borales/actions-yarn@2.0.0
+        with:
+          cmd: build # yarn build
+
+      - name: Installing Surge.
+        run: npm install --global surge
+
+        #Rename the folder for Single Page App.
+      - name: Rename the index.html to 200.html
+        run: sudo cp ./build/index.html ./build/200.html && sudo rm ./build/index.html
+
+      - name: Deploy the app.
+        run: surge ./build covidtracker-shahzad.surge.sh --token ${{ secrets.SURGE_TOKEN }}
