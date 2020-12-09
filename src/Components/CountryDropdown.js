@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, makeStyles, TextField, Typography } from "@material-ui/core";
+import { Box, makeStyles, TextField } from "@material-ui/core";
 import { Autocomplete } from "@material-ui/lab";
 
 const useStyles = makeStyles((theme) => ({
