@@ -1,8 +1,15 @@
+import { ThemeProvider } from "@material-ui/core";
+import theme from "./theme";
+import Layout from "./Utils/Layout";
+import Main from "./Views/Main";
+
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">covid 19</header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <Layout>
+        <Main />
+      </Layout>
+    </ThemeProvider>
   );
 }
 
