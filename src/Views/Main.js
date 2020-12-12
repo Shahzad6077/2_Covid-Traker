@@ -1,5 +1,5 @@
 import { Box, makeStyles } from "@material-ui/core";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import ChartStat from "../Components/ChartStat";
 import CountryDropdown from "../Components/CountryDropdown";
 import NumericStats from "../Components/NumericStats";
