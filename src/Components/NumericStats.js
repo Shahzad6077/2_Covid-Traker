@@ -27,9 +27,9 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.red,
   },
 }));
-const NumericStats = () => {
+const NumericStats = ({ selectedCountry }) => {
   const classes = useStyles();
-  //   const mdMatch = useMediaQuery();
+
   return (
     <Box paddingX={[1, 2, 4, 6]} marginY={[2, 3, 4, 6]}>
       <Grid
@@ -40,17 +40,17 @@ const NumericStats = () => {
       >
         <Grid item xs={12} sm={12} md={3} classes={{ item: classes.item }}>
           <Paper className={classes.paper}>
-            <Typography variant="h6">Infected</Typography>
+            <Typography variant="h6">Recovered</Typography>
             <Typography className={classes.infectedText} variant="h6">
-              123444
+              {selectedCountry?.recovered}
             </Typography>
           </Paper>
         </Grid>
         <Grid item xs={12} sm={12} md={3} classes={{ item: classes.item }}>
           <Paper className={classes.paper}>
-            <Typography variant="h6">Recovered</Typography>
+            <Typography variant="h6">Infected</Typography>
             <Typography className={classes.recoverdText} variant="h6">
-              123444
+              {selectedCountry?.cases}
             </Typography>
           </Paper>
         </Grid>
@@ -58,7 +58,7 @@ const NumericStats = () => {
           <Paper className={classes.paper}>
             <Typography variant="h6">Deaths</Typography>
             <Typography className={classes.deathText} variant="h6">
-              123444
+              {selectedCountry?.deaths}
             </Typography>
           </Paper>
         </Grid>

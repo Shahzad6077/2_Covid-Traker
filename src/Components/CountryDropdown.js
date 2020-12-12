@@ -2,7 +2,7 @@ import React from "react";
 import { Box, makeStyles, TextField } from "@material-ui/core";
 import { Autocomplete } from "@material-ui/lab";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     display: "flex",
     justifyContent: "center",
@@ -12,17 +12,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const countryList = [
-  { title: "Pakistan" },
-  { title: "US" },
-  { title: "India" },
-];
-const CountryDropdown = () => {
+const CountryDropdown = ({ options, countryChangeHandler, selectedOption }) => {
   const classes = useStyles();
 
   const defaultProps = {
-    options: countryList,
-    getOptionLabel: (option) => option.title,
+    options: options,
+    getOptionLabel: (option) => option.country,
   };
   return (
     <Box className={classes.root}>
@@ -34,7 +29,11 @@ const CountryDropdown = () => {
         renderInput={(params) => (
           <TextField {...params} label="Country" margin="dense" />
         )}
+        disableClearable
         fullWidth
+        onChange={countryChangeHandler}
+        value={selectedOption}
+        defaultValue="All"
       />
     </Box>
   );
