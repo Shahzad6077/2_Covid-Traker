@@ -60,7 +60,13 @@ const ChartStat = ({ selectedCountry }) => {
     return () => {
       chart.destroy();
     };
-  }, [theme, chartCanvasRef]);
+  }, [
+    theme,
+    chartCanvasRef,
+    selectedCountry?.recovered,
+    selectedCountry?.cases,
+    selectedCountry?.deaths,
+  ]);
   return (
     <Box className={classes.root}>
       <Box className={classes.inner}>

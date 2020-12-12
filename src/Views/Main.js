@@ -29,11 +29,7 @@ const Main = (props) => {
     const dataArray = [totalObj, ...countriesRes.data];
     setCovidArray(dataArray);
     setSelectedCountry(dataArray[0]);
-  }, []);
-
-  const selectedCovidData = useMemo(() => {
-    return covidArray.find((obj) => obj.country === selectedCountry);
-  }, [covidArray, selectedCountry]);
+  }, [allRes.data, countriesRes.data]);
 
   const countryChangeHandler = (e, v) => {
     setSelectedCountry(v);
