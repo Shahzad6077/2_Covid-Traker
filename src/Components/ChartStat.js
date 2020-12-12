@@ -4,7 +4,6 @@ import Chart from "chart.js";
 
 const useStyles = makeStyles(() => ({
   root: {
-    border: "1px solid",
     display: "flex",
     justifyContent: "center",
   },
